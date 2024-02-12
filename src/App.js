@@ -110,7 +110,7 @@ function App() {
 
   return (
     <div className="App" style={{ backgroundImage: `url(${backgroundImage})` }}>
-      <img src={logoImage} alt="Logo" className="logo" />
+      <img src={logoImage} alt="Logoo" className="logoo" />
       <Routes>
         <Route path="/" element={
           <>

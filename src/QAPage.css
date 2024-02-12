@@ -1,10 +1,14 @@
-.qa-page {
-    padding: 20px;
-    text-align: left;
-    color: #cc6464; /* Adjust based on your theme */
-  }
+
   
   .qa-item {
     margin-bottom: 20px;
   }
   
+  .qa-page {
+    padding: 20px;
+    text-align: left;
+    color: #cc6464; /* Adjust based on your theme */
+    background-image: url('./qa.jpg'); /* Adjust the path as necessary */
+    background-size: cover; /* Cover the entire page */
+    background-position: center; /* Center the background image */
+  }

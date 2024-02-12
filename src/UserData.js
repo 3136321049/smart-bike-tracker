@@ -2,9 +2,13 @@ import React, { useState, useEffect } from 'react';
 import './UserData.css';
 import mapImage from './map.png';
 import { useLocation } from 'react-router-dom';
+import 'leaflet/dist/leaflet.css';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import logoImage from './sign.png';
+
 
 function UserData() {
-  const [userData, setUserData] = useState({ latitude: '', longitude: '' });
+  const [userData, setUserData] = useState({ latitude: "", longitude: "" });
   const [trackerStatus, setTrackerStatus] = useState(''); // Holds the value '0', '1', or '2'
   const [threatLevel, setThreatLevel] = useState(''); // Holds the value '1' to '4'
   const [theftAlert, setTheftAlert] = useState('');
@@ -92,6 +96,23 @@ function UserData() {
     };
     return statuses[status] || 'off';
   };
+  
+  const renderMap = userData.latitude && userData.longitude && userData.latitude !== "no data" && userData.longitude !== "no data" && (
+    <div className="bike-position-map-container">
+      <h3>Your Bike Position</h3> {/* Title for the map */}
+      <MapContainer center={[userData.latitude, userData.longitude]} zoom={13} style={{ height: "100%", width: "100%" }}>
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={[userData.latitude, userData.longitude]}>
+          <Popup>
+            Current location. Latitude: {userData.latitude}, Longitude: {userData.longitude}
+          </Popup>
+        </Marker>
+      </MapContainer>
+    </div>
+  );
+
 
   // Helper function to get descriptive threat level
   const getThreatLevelDescription = (level) => {
@@ -103,9 +124,11 @@ function UserData() {
     };
     return levels[level] || 'not set';
   };
-
+  
   return (
-    <div className="user-data-page">
+
+    <div className="user-data-page"> 
+      <img src={logoImage} alt="Logo" className="logo" />
       {/* Display userId at the top right */}
       <div className="user-id-display">Username: {userId}</div>
       <div className="current-track-status">
@@ -148,8 +171,10 @@ function UserData() {
         </tbody>
       </table>
     </div>
-    
-    <div className="map-container">
+    <div className="bike-position-map-container">
+        {renderMap || <p>Loading map...</p>}
+    </div>
+    <div className="bike-theft-map-container">
       <img src={mapImage} alt="Possibility of Bike Theft in London" className="map-image"/>
       <div className="map-title">Possibility of Bike Theft in London</div>
     </div>
