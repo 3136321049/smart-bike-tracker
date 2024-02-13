@@ -1,8 +1,8 @@
 
 .theft-alert {
   position: absolute;
-  top: 47%;
-  left: 50%;
+  top: 20%;
+  left: 60%;
   transform: translate(-50%, -50%);
   color: #ff0000; /* Red color for alert */
   font-size: 2rem; /* Larger font size */
