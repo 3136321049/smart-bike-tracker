@@ -1,7 +1,7 @@
 
 .theft-alert {
   position: absolute;
-  top: 55%;
+  top: 47%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: #ff0000; /* Red color for alert */
@@ -58,8 +58,8 @@
 /* Positioning the bike theft map at the right bottom */
 .bike-theft-map-container {
   position: fixed;
-  bottom: -150px;
-  right: 5%;
+  bottom: 0px;
+  right: 3%;
   width: 30%; /* Adjust based on your preference */
   height: 400px; /* Adjust based on your preference */
   z-index: 1000; /* Ensures the map is above other content, adjust as necessary */
@@ -72,8 +72,9 @@
 
 .map-title {
   margin-top: 8px;
-  color: #fff;
-  font-size: 1rem;
+  color: #775759;
+  font-size: 2rem;
+  font-weight: bold;
 }
 
 /* Current Mode Display */
@@ -88,7 +89,7 @@
   top: 0;
   right: 0;
   margin: 20px;
-  color: #fff; /* Adjust color as needed */
+  color: #010504; /* Adjust color as needed */
   font-size: 1.5rem; /* Adjust size as needed */
   text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Optional shadow for better readability */
 }
