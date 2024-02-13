@@ -117,10 +117,10 @@ function UserData() {
   // Helper function to get descriptive threat level
   const getThreatLevelDescription = (level) => {
     const levels = {
-      '1': 'Least Sensible',
-      '2': 'Less Sensible',
-      '3': 'More Sensible',
-      '4': 'Most Sensible'
+      '0': 'Least Sensitive',
+      '1': 'Less Sensitive',
+      '2': 'More Sensitive',
+      '3': 'Most Sensitive'
     };
     return levels[level] || 'not set';
   };
@@ -140,10 +140,10 @@ function UserData() {
       </div>
       <div className="current-warning-sensitivity">
         <h2>Current Warning Sensitivity</h2>
-        <button onClick={() => updateThreatLevel('4')} className="threat-btn">Turn Tracker Most Sensible</button>
-        <button onClick={() => updateThreatLevel('3')} className="threat-btn">Turn Tracker More Sensible</button>
-        <button onClick={() => updateThreatLevel('2')} className="threat-btn">Turn Tracker Less Sensible</button>
-        <button onClick={() => updateThreatLevel('1')} className="threat-btn">Turn Tracker Least Sensible</button>
+        <button onClick={() => updateThreatLevel('3')} className="threat-btn">Turn Tracker Most Sensitive</button>
+        <button onClick={() => updateThreatLevel('2')} className="threat-btn">Turn Tracker More Sensitive</button>
+        <button onClick={() => updateThreatLevel('1')} className="threat-btn">Turn Tracker Less Sensitive</button>
+        <button onClick={() => updateThreatLevel('0')} className="threat-btn">Turn Tracker Least Sensitive</button>
         <p>Threat Level: {getThreatLevelDescription(threatLevel)}</p>
       </div>
       {theftAlert && (
