@@ -1,7 +1,7 @@
 
 .theft-alert {
   position: absolute;
-  top: 20%;
+  top: 22%;
   left: 60%;
   transform: translate(-50%, -50%);
   color: #ff0000; /* Red color for alert */
