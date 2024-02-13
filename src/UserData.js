@@ -42,33 +42,40 @@ function UserData() {
 
   // Function to post "safe" message
   const postSafeMessage = () => {
-    fetch(`https://embedded-67171-default-rtdb.firebaseio.com/${userId}/if_theft.json`, {
+    fetch(`https://embedded-67171-default-rtdb.firebaseio.com/${userId}/if_theft/if_theft.json`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify('safe'),
     });
   };
-
-  // Fetch user data
+    
   useEffect(() => {
     const fetchUserData = async (endpoint) => {
       try {
-        const response = await fetch(`https://embedded-67171-default-rtdb.firebaseio.com/${userId}/${endpoint}.json`);
+        const response = await fetch(`https://embedded-67171-default-rtdb.firebaseio.com/${userId}/if_theft/${endpoint}.json`);
         const data = await response.json();
         setUserData(prevState => ({ ...prevState, [endpoint]: data }));
       } catch (error) {
         console.error('Error fetching user data:', error);
       }
     };
-
+  
+    const intervalId = setInterval(() => {
+      fetchUserData('latitude');
+      fetchUserData('longitude');
+    }, 5000); // Fetch every 5 seconds
+  
+    // Fetch initial data immediately
     fetchUserData('latitude');
     fetchUserData('longitude');
+  
+    return () => clearInterval(intervalId);
   }, [userId]);
 
   // Monitor theft data
   useEffect(() => {
     const checkTheft = () => {
-      fetch(`https://embedded-67171-default-rtdb.firebaseio.com/${userId}/if_theft.json`)
+      fetch(`https://embedded-67171-default-rtdb.firebaseio.com/${userId}/if_theft/if_theft.json`)
         .then(response => response.json())
         .then(data => {
           if (data === 'theft') {
@@ -100,7 +107,7 @@ function UserData() {
   const renderMap = userData.latitude && userData.longitude && userData.latitude !== "no data" && userData.longitude !== "no data" && (
     <div className="bike-position-map-container">
       <h3>Your Bike Position</h3> {/* Title for the map */}
-      <MapContainer center={[userData.latitude, userData.longitude]} zoom={13} style={{ height: "100%", width: "100%" }}>
+      <MapContainer key={`${userData.latitude}-${userData.longitude}`} center={[userData.latitude, userData.longitude]} zoom={13} style={{ height: "100%", width: "100%" }}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
@@ -112,15 +119,17 @@ function UserData() {
       </MapContainer>
     </div>
   );
+  
+  
 
 
   // Helper function to get descriptive threat level
   const getThreatLevelDescription = (level) => {
     const levels = {
-      '0': 'Least Sensitive',
-      '1': 'Less Sensitive',
-      '2': 'More Sensitive',
-      '3': 'Most Sensitive'
+      '3': 'Least Sensitive',
+      '2': 'Less Sensitive',
+      '1': 'More Sensitive',
+      '0': 'Most Sensitive'
     };
     return levels[level] || 'not set';
   };
@@ -140,10 +149,10 @@ function UserData() {
       </div>
       <div className="current-warning-sensitivity">
         <h2>Current Warning Sensitivity</h2>
-        <button onClick={() => updateThreatLevel('3')} className="threat-btn">Turn Tracker Most Sensitive</button>
-        <button onClick={() => updateThreatLevel('2')} className="threat-btn">Turn Tracker More Sensitive</button>
-        <button onClick={() => updateThreatLevel('1')} className="threat-btn">Turn Tracker Less Sensitive</button>
-        <button onClick={() => updateThreatLevel('0')} className="threat-btn">Turn Tracker Least Sensitive</button>
+        <button onClick={() => updateThreatLevel('0')} className="threat-btn">Turn Tracker Most Sensitive</button>
+        <button onClick={() => updateThreatLevel('1')} className="threat-btn">Turn Tracker More Sensitive</button>
+        <button onClick={() => updateThreatLevel('2')} className="threat-btn">Turn Tracker Less Sensitive</button>
+        <button onClick={() => updateThreatLevel('3')} className="threat-btn">Turn Tracker Least Sensitive</button>
         <p>Threat Level: {getThreatLevelDescription(threatLevel)}</p>
       </div>
       {theftAlert && (
