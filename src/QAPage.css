@@ -1,14 +1,32 @@
+.qa-page-background {
+  background-image: url('qa.jpg'); /* Path to your background image */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  width: 100%; /* Ensure it covers the full width */
+  height: 100%; /* Ensure it covers the full height */
+  position: fixed; /* Make it cover the entire page */
+  top: 0;
+  left: 0;
+  z-index: -1; /* Ensure it stays behind other content */
+}
 
-  
-  .qa-item {
-    margin-bottom: 20px;
-  }
-  
-  .qa-page {
-    padding: 20px;
-    text-align: left;
-    color: #cc6464; /* Adjust based on your theme */
-    background-image: url('./qa.jpg'); /* Adjust the path as necessary */
-    background-size: cover; /* Cover the entire page */
-    background-position: center; /* Center the background image */
-  }
+/* Rest of your CSS */
+.qa-page {
+  padding: 20px; /* Add padding as needed */
+}
+
+.qa-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.qa-item p {
+  margin: 0;
+}
+
+.qa-item p strong {
+  color: #333;
+}
