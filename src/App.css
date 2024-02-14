@@ -1,131 +1,81 @@
 /* App.css */
-.App {
-  text-align: center;
-  font-family: 'Orbitron', sans-serif;
-  height: 100vh;
-  background-image: url('./bike.png'); /* Updated with generated image path */
-  background-size: cover;
-  background-position: center;
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+}
+
+nav {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+}
+
+nav ul {
+  list-style-type: none;
+}
+
+nav ul li {
+  display: inline;
+  margin-left: 20px;
+}
+
+nav ul li a {
   color: #fff;
-  position: relative;
-}
-
-.header-text h1 {
-  position: absolute;
-  margin-top: -20px; /* Adjust this value to position h2 a little right and below h1 */
-  margin-left: 100px; /* Adjust this value to position h2 to the right of h1 */
-  font-size: 1.5rem;
-  color: #08e0f0; /* Add your desired color here */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional: Adds a shadow for better readability */
-}
-
-.input-group {
-  margin-top: 20px;
-}
-
-.user-id-input, .password-input {
-  border: 2px solid #0af;
-  background-color: transparent;
-  color: #0df;
-  margin: 10px;
-  padding: 10px;
-  border-radius: 5px;
-  font-size: 1.5rem;
-}
-
-.ok-button, .submit-button {
-  background-color: #012;
-  border: 2px solid #0af;
-  color: #0df;
-  padding: 10px 20px;
-  font-size: 1.5rem;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s, transform 0.1s;
-}
-
-.ok-button:hover, .submit-button:hover {
-  background-color: #013;
-  transform: scale(1.05);
-}
-
-.status-message {
-  color: #0df;
-  margin-top: 10px;
-  font-size: 1rem;
-  text-shadow: 0px 0px 10px rgba(0, 255, 255, 0.7);
-}
-
-.qa-button {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-}
-
-.qa-button button {
-  border: 2px solid #0af;
-  background-color: transparent;
-  color: rgb(114, 185, 218);
-  padding: 10px;
-  border-radius: 5px;
-  text-decoration: none;
-  transition: color 0.3s;
-  font-size: 2rem;
-}
-
-.qa-button button:hover {
-  color: #1ff;
-}
-
-.more-features {
-  position: fixed;
-  left: 20px;
-  bottom: 20px;
-  color: #fff;
-  font-size: 2rem;
-}
-
-.more-features a {
-  color: #aad8ff;
   text-decoration: none;
 }
 
-.more-features a:hover {
-  text-decoration: underline;
+section {
+  padding: 50px 0;
 }
 
-/* Additional styles for technological theme */
-.map-container {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 300px; /* Adjust as needed */
-  height: auto; /* Adjust as needed */
-}
-
-.map-title {
+h2 {
   text-align: center;
-  margin-top: 10px;
-  color: #0df;
-  font-size: 1.2rem;
-  text-shadow: 0px 0px 10px rgba(0, 255, 255, 0.7);
+  margin-bottom: 50px;
 }
 
-.map-image {
-  width: 100%;
-  height: auto;
-  border: 2px solid #0af;
-  border-radius: 5px;
+.feature {
+  margin-bottom: 30px;
 }
 
-.logoo {
-  position: absolute;
-  top: 0; /* Align to the top */
-  left: 40px; /* Align to the left */
-  height: 160px; /* Adjust as needed */
-  margin: 10px; /* Add some space from the top and left borders */
+.feature h3 {
+  font-size: 24px;
+}
+
+.feature p {
+  font-size: 18px;
+}
+
+#showcase img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
 }
